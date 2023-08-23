@@ -3,9 +3,9 @@ import { QuoteType, QuotesType } from "../types/types";
 export const MIN_RELOAD_TIME = 10000;
 export const MAX_RELOAD_TIME = 25000;
 
-export const FADE_TIME: number = 7000;
-export const HALFWAY_FADE_TIME: number = 3500;
-export const FADE_CLASS: string = "fade";
+export const FADE_TIME = 7000;
+export const HALFWAY_FADE_TIME = 3500;
+export const FADE_CLASS = "fade";
 
 export const initialQuotes: QuotesType[] = [
   {
