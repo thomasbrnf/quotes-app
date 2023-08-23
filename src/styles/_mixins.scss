@@ -1,6 +1,6 @@
 @mixin quote-font {
-    font-family: "Italianno", sans-serif;
-    font-size: 42px;
+  font-family: "Italianno", sans-serif;
+  font-size: 42px;
 }
 
 @mixin color-scheme {
@@ -9,61 +9,60 @@
   background-color: #171717;
 }
 
-@mixin selection-disabled  {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+@mixin selection-disabled {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-  @mixin levitation($x: 0%, $y: 0%, $duration: 5s, $animationName: unique-id()) {
-    position: absolute;
-    transform: translate($x, $y);
-    z-index: -1;
-  
-    animation: #{$animationName} $duration ease-in-out infinite;
-    @keyframes #{$animationName} {
-      0% {
-        transform: translate($x, $y);
-      }
-      50% {
-        transform: translate($x, $y - 1%);
-      }
-      100% {
-        transform: translate($x, $y);
-      }
-    }
-  }
+@mixin levitation($x: 0%, $y: 0%, $duration: 5s, $animationName: unique-id()) {
+  position: absolute;
+  transform: translate($x, $y);
+  z-index: -1;
 
-  @mixin glowing($x: 0%, $y: 0%, $duration: 25s) {
-    transform: translate($x, $y);
-    animation: glow $duration ease-in-out infinite;
-  
-    @keyframes glow {
-      $base-color: rgb(91, 178, 255);
-      $base-blur: 140px;
-      0% {
-        background-color: $base-color;
-        filter: blur($base-blur);
-      }
-      25% {
-        background-color: rgb(255, 131, 131);
-        filter: blur(120px);
-      }
-      50% {
-        background-color: rgb(234, 131, 255);
-        filter: blur(100px);
-      }
-      75% {
-        background-color: rgb(131, 255, 179);
-        filter: blur(120px);
-      }
-      100% {
-        background-color: $base-color;
-        filter: blur($base-blur);
-      }
+  animation: #{$animationName} $duration ease-in-out infinite;
+  @keyframes #{$animationName} {
+    0% {
+      transform: translate($x, $y);
     }
-  
+    50% {
+      transform: translate($x, $y - 1%);
+    }
+    100% {
+      transform: translate($x, $y);
+    }
   }
+}
+
+@mixin glowing($x: 0%, $y: 0%, $duration: 25s) {
+  transform: translate($x, $y);
+  animation: glow $duration ease-in-out infinite;
+
+  @keyframes glow {
+    $base-color: rgb(91, 178, 255);
+    $base-blur: 140px;
+    0% {
+      background-color: $base-color;
+      filter: blur($base-blur);
+    }
+    25% {
+      background-color: rgb(255, 131, 131);
+      filter: blur(120px);
+    }
+    50% {
+      background-color: rgb(234, 131, 255);
+      filter: blur(100px);
+    }
+    75% {
+      background-color: rgb(131, 255, 179);
+      filter: blur(120px);
+    }
+    100% {
+      background-color: $base-color;
+      filter: blur($base-blur);
+    }
+  }
+}

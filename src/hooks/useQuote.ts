@@ -1,5 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { fetchQuote, delay, InitialQuote, HALFWAY_FADE_TIME, FADE_CLASS } from "../service";
+import {
+  fetchQuote,
+  delay,
+  InitialQuote,
+  HALFWAY_FADE_TIME,
+  FADE_CLASS,
+} from "../service";
 import { QuoteType } from "../types/types";
 
 export function useQuote(updated: Date | null) {
@@ -8,16 +14,15 @@ export function useQuote(updated: Date | null) {
   const quoteElementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if(updated) {
-    fetchAndAnimate();
-  }
+    if (updated) {
+      fetchAndAnimate();
+    }
   }, [updated]);
 
   const fetchAndAnimate = async () => {
     const result = await fetchQuote(quote.length);
 
     quoteElementRef.current?.classList.add(FADE_CLASS);
-
 
     await delay(HALFWAY_FADE_TIME);
 
@@ -27,12 +32,10 @@ export function useQuote(updated: Date | null) {
       author: result.author,
     });
 
-
-      quoteElementRef.current?.addEventListener("animationend", () => {
-        quoteElementRef.current?.classList.remove(FADE_CLASS);
-      })
-
+    quoteElementRef.current?.addEventListener("animationend", () => {
+      quoteElementRef.current?.classList.remove(FADE_CLASS);
+    });
   };
 
-  return { quote, quoteElementRef }
+  return { quote, quoteElementRef };
 }

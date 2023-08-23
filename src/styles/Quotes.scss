@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 
 .quotes {
   @include quote-font();
@@ -63,16 +63,15 @@
 
   position: absolute;
   z-index: -2;
-  
+
   &.left {
-    @include glowing($x: 0%, $y: -65%, $duration: 25s)
+    @include glowing($x: 0%, $y: -65%, $duration: 25s);
   }
 
   &.right {
-    @include glowing($x: 25%, $y: -45%, $duration: 20s)
+    @include glowing($x: 25%, $y: -45%, $duration: 20s);
   }
 
   background-color: rgb(37, 140, 230);
   opacity: 0.7;
 }
-

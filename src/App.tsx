@@ -17,9 +17,8 @@ function App() {
         <Quote updated={date} />
         <Quotes />
       </div>
-      
+
       <Button onClick={Update} disabled={disabled} />
-      
     </>
   );
 }

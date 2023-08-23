@@ -1,11 +1,11 @@
-@import 'mixins';
-@import 'variables';
+@import "mixins";
+@import "variables";
 
 :root {
   font-family: $main-font;
   line-height: 1.5;
   font-weight: 400;
-  
+
   @include color-scheme();
 
   font-synthesis: none;
@@ -24,7 +24,7 @@ body {
 a {
   text-decoration: none;
   color: #fff;
-  
+
   @include selection-disabled();
 }
 
@@ -39,7 +39,7 @@ button {
   border: none;
   border-radius: 30px;
 
-  background: #FFF;
+  background: #fff;
   color: #171717;
   transition: all 0.5s ease-in-out;
 

@@ -7,14 +7,19 @@ import {
   playChangeAnimation,
   initialQuotes,
   delay,
-  HALFWAY_FADE_TIME
+  HALFWAY_FADE_TIME,
+  MAX_RELOAD_TIME,
+  MIN_RELOAD_TIME,
 } from "../service";
 
 export function useQuotes() {
   const [quotes, setQuotes] = useState<QuotesType[]>(initialQuotes);
 
   useEffect(() => {
-    const intervalId = setInterval(refreshRandomQuote,  getRandomTime(25000, 10000));
+    const intervalId = setInterval(
+      refreshRandomQuote,
+      getRandomTime(MAX_RELOAD_TIME, MIN_RELOAD_TIME),
+    );
 
     return () => clearInterval(intervalId);
   }, []);
@@ -22,7 +27,7 @@ export function useQuotes() {
   async function refreshRandomQuote() {
     const quote = getRandomQuote(quotes);
     const quoteLength = quote.length;
-    
+
     const newContent = await fetchNewContent(quoteLength);
 
     playChangeAnimation(quote);
@@ -31,10 +36,6 @@ export function useQuotes() {
     setQuotes((quotes) => [...quotes]);
     quote.content = newContent;
   }
-  
+
   return { quotes };
 }
-
-  
-
-

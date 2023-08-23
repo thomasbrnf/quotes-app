@@ -15,10 +15,10 @@ export function Quotes() {
           </p>
         );
       })}
-        <div>
-            <div className="glowing-box left"></div>
-            <div className="glowing-box right"></div>
-        </div>
+      <div>
+        <div className="glowing-box left"></div>
+        <div className="glowing-box right"></div>
+      </div>
     </div>
   );
 }
