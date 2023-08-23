@@ -1,4 +1,7 @@
-# Quotes App
+<div align="center">
+  <h1>Quotes App</h1>
+</div>
+
 <div align="center">
   <img src="https://github.com/thomasbrnf/quotes-app/assets/57502071/d3eb31ce-73e3-4700-9ffe-0e70c8365f9b" alt="quo">
 </div>
