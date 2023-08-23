@@ -1,0 +1,62 @@
+@import 'mixins';
+@import 'variables';
+
+:root {
+  font-family: $main-font;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  @include color-scheme();
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  
+  @include selection-disabled();
+}
+
+button {
+  width: 124px;
+  height: 36px;
+  z-index: 1;
+
+  font-family: $main-font;
+  font-size: 14px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #FFF;
+  color: #171717;
+  transition: all 0.5s ease-in-out;
+
+  @include selection-disabled();
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  background: #ffffff63;
+  pointer-events: none;
+}
+
+.button-container {
+  position: relative;
+  top: 70%;
+}
