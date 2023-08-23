@@ -13,12 +13,6 @@ export function useQuote(updated: Date | null) {
 
   const quoteElementRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (updated) {
-      fetchAndAnimate();
-    }
-  }, [updated]);
-
   const fetchAndAnimate = async () => {
     const result = await fetchQuote(quote.length);
 
@@ -36,6 +30,12 @@ export function useQuote(updated: Date | null) {
       quoteElementRef.current?.classList.remove(FADE_CLASS);
     });
   };
+
+  useEffect(() => {
+    if (updated) {
+      fetchAndAnimate();
+    }
+  }, [updated, fetchAndAnimate]);
 
   return { quote, quoteElementRef };
 }

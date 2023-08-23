@@ -15,15 +15,6 @@ import {
 export function useQuotes() {
   const [quotes, setQuotes] = useState<QuotesType[]>(initialQuotes);
 
-  useEffect(() => {
-    const intervalId = setInterval(
-      refreshRandomQuote,
-      getRandomTime(MAX_RELOAD_TIME, MIN_RELOAD_TIME),
-    );
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   async function refreshRandomQuote() {
     const quote = getRandomQuote(quotes);
     const quoteLength = quote.length;
@@ -36,6 +27,15 @@ export function useQuotes() {
     setQuotes((quotes) => [...quotes]);
     quote.content = newContent;
   }
+
+  useEffect(() => {
+    const intervalId = setInterval(
+      refreshRandomQuote,
+      getRandomTime(MAX_RELOAD_TIME, MIN_RELOAD_TIME),
+    );
+
+    return () => clearInterval(intervalId);
+  }, [refreshRandomQuote]);
 
   return { quotes };
 }
