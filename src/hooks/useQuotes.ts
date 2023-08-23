@@ -15,27 +15,30 @@ import {
 export function useQuotes() {
   const [quotes, setQuotes] = useState<QuotesType[]>(initialQuotes);
 
-  async function refreshRandomQuote() {
-    const quote = getRandomQuote(quotes);
-    const quoteLength = quote.length;
-
-    const newContent = await fetchNewContent(quoteLength);
-
-    playChangeAnimation(quote);
-    await delay(HALFWAY_FADE_TIME); // waits for element to disappear (opacity 0 in .scss)
-
-    setQuotes((quotes) => [...quotes]);
-    quote.content = newContent;
-  }
+ 
 
   useEffect(() => {
+    
+    async function refreshRandomQuote() {
+      const quote = getRandomQuote(quotes);
+      const quoteLength = quote.length;
+  
+      const newContent = await fetchNewContent(quoteLength);
+  
+      playChangeAnimation(quote);
+      await delay(HALFWAY_FADE_TIME);
+  
+      setQuotes((quotes) => [...quotes]);
+      quote.content = newContent;
+    }
+
     const intervalId = setInterval(
       refreshRandomQuote,
       getRandomTime(MAX_RELOAD_TIME, MIN_RELOAD_TIME),
     );
 
     return () => clearInterval(intervalId);
-  }, [refreshRandomQuote]);
+  }, []);
 
   return { quotes };
 }

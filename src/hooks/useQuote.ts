@@ -13,29 +13,30 @@ export function useQuote(updated: Date | null) {
 
   const quoteElementRef = useRef<HTMLDivElement | null>(null);
 
-  const fetchAndAnimate = async () => {
-    const result = await fetchQuote(quote.length);
-
-    quoteElementRef.current?.classList.add(FADE_CLASS);
-
-    await delay(HALFWAY_FADE_TIME);
-
-    setQuote({
-      ...quote,
-      content: result.content,
-      author: result.author,
-    });
-
-    quoteElementRef.current?.addEventListener("animationend", () => {
-      quoteElementRef.current?.classList.remove(FADE_CLASS);
-    });
-  };
+  
 
   useEffect(() => {
+    const fetchAndAnimate = async () => {
+      const result = await fetchQuote(quote.length);
+  
+      quoteElementRef.current?.classList.add(FADE_CLASS);
+  
+      await delay(HALFWAY_FADE_TIME);
+  
+      setQuote({
+        ...quote,
+        content: result.content,
+        author: result.author,
+      });
+  
+      quoteElementRef.current?.addEventListener("animationend", () => {
+        quoteElementRef.current?.classList.remove(FADE_CLASS);
+      });
+    };
     if (updated) {
       fetchAndAnimate();
     }
-  }, [updated, fetchAndAnimate]);
+  }, [updated]);
 
   return { quote, quoteElementRef };
 }
